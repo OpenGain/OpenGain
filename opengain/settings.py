@@ -141,6 +141,10 @@ TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates'),
 )
 
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+)
+
 if DEBUG:
     EMAIL_BACKEND = 'main.backends.email_backends.EmailBackend'
     EMAIL_FILE_PATH = 'tmp/eml/'

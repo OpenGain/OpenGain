@@ -1,0 +1,19 @@
+{% extends 'default_set/base.html' %}
+{% load i18n %}
+{% load bootstrap3 %}
+{% block title %}
+    {% trans "Настройки платежных систем" %}
+{% endblock %}
+{% block account_content %}
+    {% for form in forms %}
+        <form action="" method="post" class="form">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            {% buttons %}
+                <button type="submit" class="btn btn-primary">
+                    {% trans "Отправить" %}
+                </button>
+            {% endbuttons %}
+        </form>
+    {% endfor %}
+{% endblock %}

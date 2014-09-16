@@ -1,0 +1,13 @@
+{% extends 'mail/base.html' %}
+{% load i18n %}
+{% block content %}
+    {% autoescape off %}
+        {% trans "Спасибо за регистрацию в проекте" %} <strong>{{ site_name }}</strong>!
+        <br/><br/>
+        {% trans "Ваши данные для авторизации" %}: <br/>
+        {% trans "Логин" %}: <strong>{{ user.username }}</strong><br/>
+        {% trans "Пароль" %}: <strong>{% trans "Указан при регистрации" %}</strong><br/>
+        {% trans "Ваш спонсор" %}: <strong>{{ user.sponsor.username }}</strong>
+    {% endautoescape %}
+{% endblock %}
+

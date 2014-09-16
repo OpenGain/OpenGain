@@ -1,0 +1,27 @@
+{% extends 'default_set/base.html' %}
+{% load i18n %}
+{% load bootstrap3 %}
+{% block title %}
+    {% trans "Диалог" %}
+{% endblock %}
+{% block account_content %}
+    {% load tz %}
+    {% trans "Диалог с пользователем" %}
+    {% for u in dialog.users.all %}{% if u != user %}{{ u }}{% endif %}{% endfor %}<br><br>
+    {% for message in dialog_messages %}
+        {% if message.user == user %}
+            {% trans "Вы" %}{% else %}{{ message.user }}{% endif %} |
+        {{ message.created|timezone:user.timezone|date:'j E H:i' }} |
+        {% if message.is_readed %}{% trans "Прочитано" %}{% else %}{% trans "Не прочитано" %}{% endif %}<br>
+        {{ message.message }}<br><br>
+    {% endfor %}<br><br>
+    <form action="" method="post" class="form">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% buttons %}
+            <button type="submit" class="btn btn-primary">
+                {% trans "Послать сообщение" %}
+            </button>
+        {% endbuttons %}
+    </form>
+{% endblock %}

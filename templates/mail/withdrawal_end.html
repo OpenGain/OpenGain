@@ -1,0 +1,13 @@
+{% extends 'mail/base.html' %}
+{% load i18n %}
+{% block content %}
+    {% autoescape off %}
+        {% trans "Ваш запрос на вывод средств успешно обработан. Деньги отправлены на Ваш кошелек" %}
+        <br/><br/>
+        {% trans "Платежная система" %}: <strong>{{ transaction.get_ps_display }}</strong><br/>
+        {% trans "Номер кошелька" %}: <strong>{{ transaction.get_wallet }}</strong><br/>
+        {% trans "Сумма" %}: <strong>${{ transaction.get_abs_amount }}</strong><br/>
+        {% trans "Номер операции (Batch)" %}: <strong>{{ transaction.batch }}</strong><br/>
+    {% endautoescape %}
+{% endblock %}
+

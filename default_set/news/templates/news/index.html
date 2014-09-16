@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load bootstrap3 %}
+{% block title %}{% trans "Новости" %}{% endblock %}
+{% block content %}
+    {% load tz %}
+    <br/>
+    {% if object_list %}
+        {% include 'includes/paginator.html' with page_obj=object_list %}<br>
+        {% for object in object_list %}
+            {% if user.is_authenticated %}
+                {{ object.created|timezone:user.timezone|date:'j E H:i' }}
+            {% else %}
+                {{ object.created|date:'j E H:i' }}
+            {% endif %}
+            <br/>
+            <a href="{% url 'news_detail' object.slug %}">{{ object.title }}</a><br/>
+            {{ object.text|safe|linebreaks }}
+        {% endfor %}
+        {% include 'includes/paginator.html' with page_obj=object_list %}<br>
+    {% else %}
+        <p>{% trans "Нет объектов для отображения" %}</p>
+    {% endif %}
+
+{% endblock %}

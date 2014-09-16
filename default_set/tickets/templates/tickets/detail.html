@@ -1,0 +1,34 @@
+{% extends 'default_set/base.html' %}
+{% load i18n %}
+{% load bootstrap3 %}
+{% block title %}
+    {% trans "Тикет" %}
+{% endblock %}
+{% block account_content %}
+    {% load tz %}
+    {% trans "Тикет" %}<br><br>
+    {% trans "Пользователь" %}: {{ ticket.user }}<br>
+    {% trans "Статус" %}: {% trans "Открыт" %}<br>
+    {% trans "Тема" %}:<br> {{ ticket.subject }}<br><br>
+    {% if ticket_messages %}
+        {% for message in ticket_messages %}
+            {{ message.user }}, {{ message.created|timezone:user.timezone|date:'j E H:i' }}
+            {% if message.is_readed %}{% trans "Прочитано" %}{% else %}{% trans "Не прочитано" %}{% endif %}<br>
+            {{ message.message }}<br><br>
+        {% endfor %}
+    {% endif %}
+
+    {% if not ticket.is_closed %}
+        <form action="" method="post" class="form">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            {% buttons %}
+                <button type="submit" class="btn btn-primary">
+                    {% trans "Создать сообщение" %}
+                </button><br><br>
+            {% endbuttons %}
+        </form>
+        <a href="{% url 'tickets_close' ticket.id %}">{% trans "Закрыть тикет" %}</a><br><br>
+    {% endif %}
+
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'default_set/base.html' %}
+{% load i18n %}
+{% block title %}
+    {% trans "Пополнение баланса" %}
+{% endblock %}
+{% block account_content %}
+    {% load bootstrap3 %}
+    <form action="" method="post" class="form">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% buttons %}
+            <button type="submit" class="btn btn-primary">
+                {% trans "Отправить" %}
+            </button>
+        {% endbuttons %}
+    </form>
+{% endblock %}

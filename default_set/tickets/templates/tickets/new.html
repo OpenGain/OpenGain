@@ -1,0 +1,18 @@
+{% extends 'default_set/base.html' %}
+{% load i18n %}
+{% load bootstrap3 %}
+{% block title %}
+    {% trans "Новый тикет" %}
+{% endblock %}
+{% block account_content %}
+    {% trans "Новый тикет" %}
+    <form action="" method="post" class="form">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% buttons %}
+            <button type="submit" class="btn btn-primary">
+                {% trans "Создать тикет" %}
+            </button>
+        {% endbuttons %}
+    </form>
+{% endblock %}

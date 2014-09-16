@@ -1,0 +1,66 @@
+{% load i18n %}
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}
+        OpenGain Engine
+    {% endblock %} | {{ settings.PROJECT_TITLE }}</title>
+</head>
+<body>
+<div class="header">
+    <a href="{% url 'index' %}">{% trans "Главная" %}</a>
+    <a href="{% url 'news_index' %}">{% trans "Новости" %}</a>
+    <a href="{% url 'reviews_index' %}">{% trans "Отзывы" %}</a>
+    {% load staticpages %}
+    {% get_staticpages as flatpages %}
+    {% for page in flatpages %}
+        <a href="/pages{{ page.url }}">{{ page.title }}</a>
+    {% endfor %}
+
+    {% if not user.is_authenticated %}
+
+        <a href="{% url 'account_signin' %}">{% trans "Вход" %}</a>
+        <a href="{% url 'account_signup' %}">{% trans "Регистрация" %}</a>
+    {% else %}
+        <a href="{% url 'account_index' %}">{% trans "Личный кабинет" %}</a>
+        <a href="{% url 'account_signout' %}">{% trans "Выход" %}</a>
+    {% endif %}
+    <form action="{% url 'set_language' %}" method="post" name="lang">
+        {% csrf_token %}
+        <input name="next" type="hidden" value="{{ redirect_to }}"/>
+        <select name="language">
+            {% get_language_info_list for LANGUAGES as languages %}
+            {% for language in languages %}
+                <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %}
+                        selected="selected"{% endif %}>
+                    {{ language.name_local }} ({{ language.code }})
+                </option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Go"/>
+    </form>
+
+</div>
+
+<div class="balances">
+    {% if user.is_authenticated %}
+        {{ user.get_full_name }}
+        {% for ps in user.get_balances_display %}
+            {{ ps.0 }}: ${{ ps.1 }} {% if not forloop.last %} | {% endif %}
+        {% endfor %}
+    {% endif %}
+</div>
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+{% block content %}
+
+{% endblock %}
+</body>
+</html>

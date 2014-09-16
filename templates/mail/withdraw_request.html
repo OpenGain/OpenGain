@@ -1,0 +1,16 @@
+{% extends 'mail/base.html' %}
+{% load i18n %}
+{% block content %}
+    {% autoescape off %}
+        {% trans "Вы сделали запрос на вывод средств." %}
+        <br/><br/>
+        {% trans "Платежная система" %}: <strong>{{ ps }}</strong><br/>
+        {% trans "Сумма" %}: <strong>${{ amount }}</strong><br/>
+        {% trans "Наша комиссия" %}: <strong>{{ comission }}%</strong><br/>
+        {% trans "К получению" %}: <strong style="color:green">${{ for_withdraw }}</strong><br/>
+        {% trans "Текущий баланс" %}: <strong>${{ balance }}</strong><br/><br/>
+        <em>{% blocktrans %}Напоминаем, что срок вывода составляет от 1 минуты до 24 часов. О завершении операции Вы
+            будете дополнительно уведомлены на Email.{% endblocktrans %}</em>
+    {% endautoescape %}
+{% endblock %}
+

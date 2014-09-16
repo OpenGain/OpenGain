@@ -1,0 +1,1103 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-09-15 03:56+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: captcha/fields.py:19
+msgid "Неверно, попробуйте еще раз."
+msgstr ""
+
+#: default_set/admin.py:72
+msgid "Даты"
+msgstr ""
+
+#: default_set/admin.py:73
+msgid "Чеки"
+msgstr ""
+
+#: default_set/admin.py:99
+#, python-format
+msgid "Error: %s"
+msgstr ""
+
+#: default_set/admin.py:101
+msgid "Обработать вывод"
+msgstr ""
+
+#: default_set/apps.py:7
+msgid "Профили пользователей"
+msgstr ""
+
+#: default_set/dialogs/apps.py:7 default_set/dialogs/models.py:14
+#: default_set/dialogs/templates/dialogs/index.html:6
+#: default_set/dialogs/templates/dialogs/index.html:9
+#: templates/default_set/base.html:11 templates/default_set/base.html.py:14
+msgid "Диалоги"
+msgstr ""
+
+#: default_set/dialogs/forms.py:7 default_set/forms.py:197
+msgid "Получатель"
+msgstr ""
+
+#: default_set/dialogs/forms.py:8 default_set/dialogs/forms.py:29
+#: default_set/dialogs/models.py:37 default_set/tickets/forms.py:7
+#: default_set/tickets/forms.py:11 default_set/tickets/models.py:30
+msgid "Сообщение"
+msgstr ""
+
+#: default_set/dialogs/forms.py:20 default_set/forms.py:210
+msgid "Пользователь с таким логином не зарегистрирован"
+msgstr ""
+
+#: default_set/dialogs/forms.py:22
+msgid "Чтобы написать администрации проекта - создайте тикет"
+msgstr ""
+
+#: default_set/dialogs/forms.py:24
+msgid "Вы не можете отправить сообщение самому себе"
+msgstr ""
+
+#: default_set/dialogs/models.py:8
+msgid "Участники диалога"
+msgstr ""
+
+#: default_set/dialogs/models.py:13 default_set/dialogs/models.py:33
+#: default_set/dialogs/templates/dialogs/detail.html:5
+msgid "Диалог"
+msgstr ""
+
+#: default_set/dialogs/models.py:34 default_set/models.py:254
+#: default_set/reviews/models.py:8 default_set/tickets/models.py:7
+#: default_set/tickets/models.py:28
+#: default_set/tickets/templates/tickets/detail.html:10
+#: payment_systems/egopay/models.py:11 payment_systems/payeer/models.py:16
+#: payment_systems/perfect_money/models.py:15
+msgid "Пользователь"
+msgstr ""
+
+#: default_set/dialogs/models.py:36 default_set/tickets/models.py:27
+msgid "Дата содания"
+msgstr ""
+
+#: default_set/dialogs/models.py:38
+#: default_set/dialogs/templates/dialogs/detail.html:15
+#: default_set/tickets/templates/tickets/detail.html:16
+msgid "Прочитано"
+msgstr ""
+
+#: default_set/dialogs/models.py:42
+msgid "Сообщение в диалоге"
+msgstr ""
+
+#: default_set/dialogs/models.py:43
+msgid "Сообщения в диалогах"
+msgstr ""
+
+#: default_set/dialogs/templates/dialogs/detail.html:9
+msgid "Диалог с пользователем"
+msgstr ""
+
+#: default_set/dialogs/templates/dialogs/detail.html:13
+msgid "Вы"
+msgstr ""
+
+#: default_set/dialogs/templates/dialogs/detail.html:15
+#: default_set/tickets/templates/tickets/detail.html:16
+msgid "Не прочитано"
+msgstr ""
+
+#: default_set/dialogs/templates/dialogs/detail.html:23
+msgid "Послать сообщение"
+msgstr ""
+
+#: default_set/dialogs/templates/dialogs/index.html:14
+msgid "Диалог c пользователем"
+msgstr ""
+
+#: default_set/dialogs/templates/dialogs/index.html:15
+msgid "Сообщений"
+msgstr ""
+
+#: default_set/dialogs/templates/dialogs/index.html:16
+msgid "Непрочитанных"
+msgstr ""
+
+#: default_set/dialogs/templates/dialogs/index.html:36
+msgid "У вас нет ни одного диалога."
+msgstr ""
+
+#: default_set/dialogs/templates/dialogs/index.html:43
+msgid "Отправить сообщение"
+msgstr ""
+
+#: default_set/dialogs/views.py:18 default_set/dialogs/views.py:37
+msgid "Ваше сообщение отправлено"
+msgstr ""
+
+#: default_set/forms.py:20 default_set/models.py:65
+msgid "Часовой пояс"
+msgstr ""
+
+#: default_set/forms.py:21
+msgid "Вас пригласил"
+msgstr ""
+
+#: default_set/forms.py:48 default_set/forms.py:103
+msgid "Логин или Email"
+msgstr ""
+
+#: default_set/forms.py:51
+msgid "Пожалуйста, введите корректное имя пользователя (или Email) и пароль."
+msgstr ""
+
+#: default_set/forms.py:52
+msgid "Этот аккаунт заблокирован."
+msgstr ""
+
+#: default_set/forms.py:123
+msgid "Пользователь с таким логином или Email-адресом не зарегистрирован"
+msgstr ""
+
+#: default_set/forms.py:176 default_set/forms.py:183 default_set/forms.py:201
+#: payment_systems/payeer/templates/payeer/continue.html:5
+#: payment_systems/perfect_money/templates/perfect_money/continue.html:5
+#: templates/default_set/history.html:36 templates/mail/comission.html:7
+#: templates/mail/withdraw_request.html:7 templates/mail/withdrawal_end.html:7
+msgid "Платежная система"
+msgstr ""
+
+#: default_set/forms.py:177 default_set/forms.py:184 default_set/forms.py:202
+#: default_set/models.py:258
+#: payment_systems/payeer/templates/payeer/continue.html:6
+#: payment_systems/perfect_money/templates/perfect_money/continue.html:6
+#: templates/default_set/history.html:37 templates/mail/comission.html:8
+#: templates/mail/withdraw_request.html:8 templates/mail/withdrawal_end.html:9
+msgid "Сумма"
+msgstr ""
+
+#: default_set/forms.py:199
+msgid "Это значение может состоять из букв, цифр и знаков @/./+/-/_."
+msgstr ""
+
+#: default_set/forms.py:215
+msgid "Старый пароль"
+msgstr ""
+
+#: default_set/forms.py:217
+msgid "Новый пароль"
+msgstr ""
+
+#: default_set/forms.py:219
+msgid "Подтверждение нового пароля"
+msgstr ""
+
+#: default_set/models.py:25 default_set/transactions.py:18
+#: default_set/views.py:142 default_set/views.py:166
+msgid "Недостаточно средств"
+msgstr ""
+
+#: default_set/models.py:33
+msgid "Имя пользователя должно быть установлено"
+msgstr ""
+
+#: default_set/models.py:62 templates/mail/registration.html:8
+msgid "Логин"
+msgstr ""
+
+#: default_set/models.py:63
+msgid "Email"
+msgstr ""
+
+#: default_set/models.py:64 templates/base.html:24
+#: templates/default_set/referrals.html:20 templates/default_set/signup.html:5
+msgid "Регистрация"
+msgstr ""
+
+#: default_set/models.py:67
+msgid "Админ"
+msgstr ""
+
+#: default_set/models.py:68
+msgid "Активный"
+msgstr ""
+
+#: default_set/models.py:69
+msgid "Уведомления о новых рефералах"
+msgstr ""
+
+#: default_set/models.py:70
+msgid "Уведомления о реферальной комиссии"
+msgstr ""
+
+#: default_set/models.py:71
+msgid "Другие уведомления"
+msgstr ""
+
+#: default_set/models.py:72 templates/default_set/index.html:10
+#: templates/default_set/referrals.html:23
+msgid "Спонсор"
+msgstr ""
+
+#: default_set/models.py:74
+msgid "Язык"
+msgstr ""
+
+#: default_set/models.py:83
+msgid "пользователь"
+msgstr ""
+
+#: default_set/models.py:84
+msgid "пользователи"
+msgstr ""
+
+#: default_set/models.py:201 templates/default_set/deposit.html:4
+#: templates/default_set/deposit_continue.html:4
+#: templates/default_set/deposit_error.html:4
+#: templates/default_set/deposit_ok.html:4
+msgid "Пополнение баланса"
+msgstr ""
+
+#: default_set/models.py:202 templates/default_set/base.html:6
+#: templates/default_set/withdraw.html:5
+msgid "Вывод средств"
+msgstr ""
+
+#: default_set/models.py:203
+msgid "Внутренний перевод исходящий"
+msgstr ""
+
+#: default_set/models.py:204
+msgid "Внутренний перевод входящий"
+msgstr ""
+
+#: default_set/models.py:205 default_set/transactions.py:126
+msgid "Реферальная комиссия"
+msgstr ""
+
+#: default_set/models.py:206
+msgid "Начисление процентов"
+msgstr ""
+
+#: default_set/models.py:207
+msgid "ЗП Админа"
+msgstr ""
+
+#: default_set/models.py:250 default_set/news/models.py:6
+#: default_set/reviews/models.py:7
+msgid "Создание"
+msgstr ""
+
+#: default_set/models.py:252
+msgid "Изменение"
+msgstr ""
+
+#: default_set/models.py:256
+msgid "Платежка"
+msgstr ""
+
+#: default_set/models.py:259
+msgid "Тип транзакции"
+msgstr ""
+
+#: default_set/models.py:261 templates/default_set/history.html:38
+msgid "Баланс до"
+msgstr ""
+
+#: default_set/models.py:263 templates/default_set/history.html:39
+msgid "Баланс после"
+msgstr ""
+
+#: default_set/models.py:265 templates/default_set/history.html:40
+msgid "Батч"
+msgstr ""
+
+#: default_set/models.py:266 templates/default_set/history.html:41
+msgid "Завершено"
+msgstr ""
+
+#: default_set/models.py:268 templates/default_set/history.html:35
+msgid "Второй пользователь"
+msgstr ""
+
+#: default_set/models.py:275
+msgid "транзакция"
+msgstr ""
+
+#: default_set/models.py:276
+msgid "транзакции"
+msgstr ""
+
+#: default_set/models.py:291
+msgid "В час"
+msgstr ""
+
+#: default_set/models.py:292
+msgid "В сутки"
+msgstr ""
+
+#: default_set/models.py:293
+msgid "В неделю"
+msgstr ""
+
+#: default_set/models.py:294
+msgid "В месяц"
+msgstr ""
+
+#: default_set/models.py:307
+msgid "Название"
+msgstr ""
+
+#: default_set/models.py:308
+msgid "Мин. сумма"
+msgstr ""
+
+#: default_set/models.py:310
+msgid "Макс. сумма"
+msgstr ""
+
+#: default_set/models.py:312
+msgid "Процент"
+msgstr ""
+
+#: default_set/models.py:313
+msgid "Период"
+msgstr ""
+
+#: default_set/models.py:319
+msgid "инвестиционный план"
+msgstr ""
+
+#: default_set/models.py:320
+msgid "инвестиционные планы"
+msgstr ""
+
+#: default_set/news/apps.py:7 default_set/news/templates/news/index.html:4
+#: templates/base.html:13
+msgid "Новости"
+msgstr ""
+
+#: default_set/news/models.py:7
+msgid "Заголовок"
+msgstr ""
+
+#: default_set/news/models.py:8
+msgid "Ссылка"
+msgstr ""
+
+#: default_set/news/models.py:9
+msgid "Текст новости"
+msgstr ""
+
+#: default_set/news/models.py:10 default_set/reviews/models.py:12
+msgid "Публиковать"
+msgstr ""
+
+#: default_set/news/models.py:13
+msgid "новость"
+msgstr ""
+
+#: default_set/news/models.py:14
+msgid "новости"
+msgstr ""
+
+#: default_set/news/templates/news/detail.html:4
+msgid "Новость"
+msgstr ""
+
+#: default_set/news/templates/news/detail.html:18
+msgid "Объект не опубликован"
+msgstr ""
+
+#: default_set/news/templates/news/index.html:22
+#: default_set/reviews/templates/reviews/index.html:24
+msgid "Нет объектов для отображения"
+msgstr ""
+
+#: default_set/reviews/apps.py:7
+#: default_set/reviews/templates/reviews/index.html:4 templates/base.html:14
+msgid "Отзывы"
+msgstr ""
+
+#: default_set/reviews/models.py:10
+msgid "Отзыв"
+msgstr ""
+
+#: default_set/reviews/models.py:11
+msgid "Ответ админа"
+msgstr ""
+
+#: default_set/reviews/models.py:15
+msgid "отзыв"
+msgstr ""
+
+#: default_set/reviews/models.py:16
+msgid "отзывы"
+msgstr ""
+
+#: default_set/reviews/templates/reviews/index.html:33
+#: templates/default_set/deposit.html:13
+#: templates/default_set/password_reset_form.html:14
+#: templates/default_set/payment_systems_settings.html:14
+#: templates/default_set/settings.html:13
+#: templates/default_set/settings.html:22 templates/default_set/signin.html:13
+#: templates/default_set/signup.html:13 templates/default_set/transfer.html:13
+#: templates/default_set/withdraw.html:13
+msgid "Отправить"
+msgstr ""
+
+#: default_set/reviews/templates/reviews/index.html:38
+msgid "Вы должны авторизоваться для публикации отзыва."
+msgstr ""
+
+#: default_set/reviews/views.py:18
+msgid "Ваш отзыв успешно отправлен и будет опубликован после модерации."
+msgstr ""
+
+#: default_set/staticpages/admin.py:14
+msgid "Дополнительные параметры"
+msgstr ""
+
+#: default_set/staticpages/apps.py:7
+msgid "Статические страницы"
+msgstr ""
+
+#: default_set/staticpages/forms.py:8 default_set/staticpages/models.py:10
+msgid "URL"
+msgstr ""
+
+#: default_set/staticpages/forms.py:9
+msgid ""
+"Пример: '/about/contact/'. Убедитесь, что ввели начальную и конечную косые "
+"черты."
+msgstr ""
+
+#: default_set/staticpages/forms.py:11
+msgid ""
+"Это значение должно содержать только буквы, цифры, точки, подчеркивания, "
+"тире, косые черты или тильды."
+msgstr ""
+
+#: default_set/staticpages/forms.py:22
+msgid "В начале URL отсутствует косая черта."
+msgstr ""
+
+#: default_set/staticpages/forms.py:29
+msgid "В конце URL отсутствует косая черта."
+msgstr ""
+
+#: default_set/staticpages/models.py:11
+msgid "заголовок"
+msgstr ""
+
+#: default_set/staticpages/models.py:12
+msgid "содержание"
+msgstr ""
+
+#: default_set/staticpages/models.py:13
+msgid "имя шаблона"
+msgstr ""
+
+#: default_set/staticpages/models.py:15
+msgid ""
+"Пример: 'staticpages/contact_page.html'. Если не предусмотрен, система будет "
+"использовать 'staticpages/default.html'."
+msgstr ""
+
+#: default_set/staticpages/models.py:18
+msgid "статическая страница"
+msgstr ""
+
+#: default_set/staticpages/models.py:19
+msgid "статические страницы"
+msgstr ""
+
+#: default_set/tickets/apps.py:7
+#: default_set/tickets/templates/tickets/index.html:5
+#: default_set/tickets/templates/tickets/index.html:9
+#: templates/default_set/base.html:16
+msgid "Тикеты"
+msgstr ""
+
+#: default_set/tickets/forms.py:6 default_set/tickets/models.py:10
+#: default_set/tickets/templates/tickets/detail.html:12
+#: default_set/tickets/templates/tickets/index.html:15
+msgid "Тема"
+msgstr ""
+
+#: default_set/tickets/models.py:9
+msgid "Дата создания"
+msgstr ""
+
+#: default_set/tickets/models.py:11
+#: default_set/tickets/templates/tickets/index.html:27
+msgid "Закрыт"
+msgstr ""
+
+#: default_set/tickets/models.py:15
+msgid "тикет"
+msgstr ""
+
+#: default_set/tickets/models.py:16
+msgid "тикеты"
+msgstr ""
+
+#: default_set/tickets/models.py:19
+msgid "{}#тема:{}"
+msgstr ""
+
+#: default_set/tickets/models.py:26
+#: default_set/tickets/templates/tickets/detail.html:5
+#: default_set/tickets/templates/tickets/detail.html:9
+msgid "Тикет"
+msgstr ""
+
+#: default_set/tickets/models.py:31
+msgid "Прочитан"
+msgstr ""
+
+#: default_set/tickets/models.py:38
+msgid "сообщение тикета"
+msgstr ""
+
+#: default_set/tickets/models.py:39
+msgid "сообщения тикетов"
+msgstr ""
+
+#: default_set/tickets/templates/tickets/detail.html:11
+#: default_set/tickets/templates/tickets/index.html:16
+msgid "Статус"
+msgstr ""
+
+#: default_set/tickets/templates/tickets/detail.html:11
+#: default_set/tickets/templates/tickets/index.html:29
+msgid "Открыт"
+msgstr ""
+
+#: default_set/tickets/templates/tickets/detail.html:27
+msgid "Создать сообщение"
+msgstr ""
+
+#: default_set/tickets/templates/tickets/detail.html:31
+msgid "Закрыть тикет"
+msgstr ""
+
+#: default_set/tickets/templates/tickets/index.html:14
+#: templates/default_set/history.html:33
+msgid "Дата"
+msgstr ""
+
+#: default_set/tickets/templates/tickets/index.html:17
+msgid "Новых сообщений"
+msgstr ""
+
+#: default_set/tickets/templates/tickets/index.html:38
+msgid "У вас нет тикетов"
+msgstr ""
+
+#: default_set/tickets/templates/tickets/index.html:40
+msgid "Создать"
+msgstr ""
+
+#: default_set/tickets/templates/tickets/new.html:5
+#: default_set/tickets/templates/tickets/new.html:8
+msgid "Новый тикет"
+msgstr ""
+
+#: default_set/tickets/templates/tickets/new.html:14
+msgid "Создать тикет"
+msgstr ""
+
+#: default_set/tickets/views.py:27
+msgid "Создан новый тикет"
+msgstr ""
+
+#: default_set/tickets/views.py:46
+msgid "Создано новое сообщение"
+msgstr ""
+
+#: default_set/tickets/views.py:64
+msgid "Тикет закрыт"
+msgstr ""
+
+#: default_set/views.py:57
+msgid "Регистрация в проекте {}"
+msgstr ""
+
+#: default_set/views.py:60
+msgid "Новый реферал в проекте {}"
+msgstr ""
+
+#: default_set/views.py:82
+msgid ""
+"У вас имеются 3 или более незавершенные операции пополнения. Пожалуйста, "
+"завершите или отмените их на странице \"История операций\""
+msgstr ""
+
+#: default_set/views.py:123
+msgid "Укажите аккаунт платежной системы в настройках"
+msgstr ""
+
+#: default_set/views.py:134
+msgid "Запрос на вывод"
+msgstr ""
+
+#: default_set/views.py:139
+msgid "Запрос на вывод отправлен"
+msgstr ""
+
+#: default_set/views.py:154
+msgid "Вы не можете сделать перевод самому себе"
+msgstr ""
+
+#: default_set/views.py:163
+msgid "Внутренний перевод успешно отправлен"
+msgstr ""
+
+#: default_set/views.py:211
+msgid "Пароль успешно изменен"
+msgstr ""
+
+#: default_set/views.py:220
+msgid "Данные профиля успешно обновлены"
+msgstr ""
+
+#: default_set/views.py:254
+msgid "Платежный аккаунт успешно сохранен"
+msgstr ""
+
+#: main/__init__.py:7 main/__init__.py:8
+msgid "Админка OpenGain Engine"
+msgstr ""
+
+#: main/__init__.py:9
+msgid "Администрирование проекта"
+msgstr ""
+
+#: main/apps.py:7
+msgid "Основное"
+msgstr ""
+
+#: payment_systems/egopay/models.py:13
+msgid "Кошелек EgoPay"
+msgstr ""
+
+#: payment_systems/egopay/models.py:15 payment_systems/payeer/models.py:20
+#: payment_systems/perfect_money/models.py:19
+msgid "Баланс"
+msgstr ""
+
+#: payment_systems/forms.py:12
+msgid "Изменение кошелька запрещено в целях безопасности"
+msgstr ""
+
+#: payment_systems/payeer/models.py:12
+msgid "Кошелек должен иметь формат P1234567"
+msgstr ""
+
+#: payment_systems/payeer/models.py:18
+msgid "Кошелек Payeer"
+msgstr ""
+
+#: payment_systems/payeer/templates/payeer/continue.html:17
+#: payment_systems/perfect_money/templates/perfect_money/continue.html:26
+msgid "Продолжить"
+msgstr ""
+
+#: payment_systems/payeer/views.py:83
+#: payment_systems/perfect_money/views.py:53
+msgid "Вывод средств в проекте {}"
+msgstr ""
+
+#: payment_systems/perfect_money/models.py:11
+msgid "Кошелек должен иметь формат U1234567"
+msgstr ""
+
+#: payment_systems/perfect_money/models.py:17
+msgid "Кошелек Perfect Money"
+msgstr ""
+
+#: templates/base.html:12
+msgid "Главная"
+msgstr ""
+
+#: templates/base.html:23 templates/default_set/password_reset_complete.html:6
+msgid "Вход"
+msgstr ""
+
+#: templates/base.html:26 templates/default_set/index.html:4
+msgid "Личный кабинет"
+msgstr ""
+
+#: templates/base.html:27
+msgid "Выход"
+msgstr ""
+
+#: templates/default_set/base.html:5
+msgid "Пополнение"
+msgstr ""
+
+#: templates/default_set/base.html:7 templates/default_set/transfer.html:5
+msgid "Внутренний перевод"
+msgstr ""
+
+#: templates/default_set/base.html:8 templates/default_set/history.html:5
+#: templates/default_set/history.html:9
+msgid "История операций"
+msgstr ""
+
+#: templates/default_set/base.html:9 templates/default_set/referrals.html:6
+msgid "Реферальная система"
+msgstr ""
+
+#: templates/default_set/base.html:17 templates/default_set/settings.html:5
+msgid "Настройки аккаунта"
+msgstr ""
+
+#: templates/default_set/base.html:18
+#: templates/default_set/payment_systems_settings.html:5
+msgid "Настройки платежных систем"
+msgstr ""
+
+#: templates/default_set/deposit_continue.html:10
+msgid "Отменить"
+msgstr ""
+
+#: templates/default_set/deposit_error.html:7
+msgid ""
+"Произошла ошибка во время проведения платежа. Пожалуйста, попробуйте еще раз."
+msgstr ""
+
+#: templates/default_set/deposit_ok.html:7
+msgid "Баланс успешно пополнен!"
+msgstr ""
+
+#: templates/default_set/history.html:12
+msgid "Все"
+msgstr ""
+
+#: templates/default_set/history.html:13 templates/default_set/history.html:22
+msgid "Пополнения"
+msgstr ""
+
+#: templates/default_set/history.html:14 templates/default_set/history.html:23
+#: templates/default_set/index.html:13
+msgid "Выводы"
+msgstr ""
+
+#: templates/default_set/history.html:15 templates/default_set/history.html:24
+#: templates/default_set/index.html:16
+msgid "Входящие переводы"
+msgstr ""
+
+#: templates/default_set/history.html:16 templates/default_set/history.html:25
+#: templates/default_set/index.html:17
+msgid "Исходящие переводы"
+msgstr ""
+
+#: templates/default_set/history.html:17 templates/default_set/history.html:26
+#: templates/default_set/index.html:14
+msgid "Реферальные"
+msgstr ""
+
+#: templates/default_set/history.html:18 templates/default_set/history.html:27
+msgid "Начисления процентов"
+msgstr ""
+
+#: templates/default_set/history.html:21
+msgid "Итого"
+msgstr ""
+
+#: templates/default_set/history.html:34
+msgid "Операция"
+msgstr ""
+
+#: templates/default_set/history.html:61
+msgid "Да"
+msgstr ""
+
+#: templates/default_set/history.html:63
+msgid "Нет"
+msgstr ""
+
+#: templates/default_set/history.html:70
+msgid "Нет данных для отображения"
+msgstr ""
+
+#: templates/default_set/index.html:8 templates/mail/base.html:9
+msgid "Привет"
+msgstr ""
+
+#: templates/default_set/index.html:9
+msgid "Отсутствует"
+msgstr ""
+
+#: templates/default_set/index.html:11
+msgid "Рефералов"
+msgstr ""
+
+#: templates/default_set/index.html:12
+msgid "Депозиты"
+msgstr ""
+
+#: templates/default_set/index.html:15
+msgid "Проценты на депозиты"
+msgstr ""
+
+#: templates/default_set/password_reset_complete.html:3
+msgid "Восстановление доступа завершено"
+msgstr ""
+
+#: templates/default_set/password_reset_complete.html:5
+msgid "Ваш пароль был сохранен.  Теперь Вы можете войти."
+msgstr ""
+
+#: templates/default_set/password_reset_confirm.html:3
+msgid "Введите новый пароль"
+msgstr ""
+
+#: templates/default_set/password_reset_confirm.html:6
+msgid ""
+"Пожалуйста, введите новый пароль дважды, чтобы мы могли проверить, что Вы "
+"ввели его правильно."
+msgstr ""
+
+#: templates/default_set/password_reset_confirm.html:10
+msgid "Новый пароль:"
+msgstr ""
+
+#: templates/default_set/password_reset_confirm.html:13
+msgid "Подтвердите новый пароль"
+msgstr ""
+
+#: templates/default_set/password_reset_confirm.html:14
+msgid "Изменение пароля"
+msgstr ""
+
+#: templates/default_set/password_reset_confirm.html:17
+msgid ""
+"Ссылка для сброса пароля является недействительной, возможно, потому что уже "
+"была использована.  Пожалуйста, запросите новый сброс пароля."
+msgstr ""
+
+#: templates/default_set/password_reset_done.html:3
+#: templates/default_set/password_reset_form.html:4
+#: templates/default_set/signin.html:17
+msgid "Восстановление доступа"
+msgstr ""
+
+#: templates/default_set/password_reset_done.html:5
+msgid ""
+"Мы отправили на Ваш Email инструкции по восстановлению пароля. Вы должны "
+"получить письмо в ближайшее время."
+msgstr ""
+
+#: templates/default_set/password_reset_done.html:6
+msgid ""
+"Если Вы не получили письмо с инструкциями, пожалуйста, проверьте папку\n"
+"        \"Спам\"."
+msgstr ""
+
+#: templates/default_set/password_reset_email.html:2
+#, python-format
+msgid ""
+"Вы получили это письмо, потому что запросили сброс пароля для личного "
+"кабинета на\n"
+"        %(site_name)s."
+msgstr ""
+
+#: templates/default_set/password_reset_email.html:4
+#: templates/mail/password_reset_email.html:8
+msgid "Пожалуйста, перейдите на эту страницу и введите новый пароль:"
+msgstr ""
+
+#: templates/default_set/password_reset_email.html:8
+#: templates/mail/password_reset_email.html:13
+msgid "Ваше имя пользователя (на случай, если вы его забыли):"
+msgstr ""
+
+#: templates/default_set/password_reset_email.html:9
+msgid "Спасибо, что используете наш сайт!"
+msgstr ""
+
+#: templates/default_set/password_reset_email.html:10
+#, python-format
+msgid "Команда %(site_name)s"
+msgstr ""
+
+#: templates/default_set/password_reset_form.html:6
+msgid ""
+"Забыли пароль? Введите Ваш логин или Email в поле ниже, и мы отправим Вам "
+"письмо с инструкциями\n"
+"        для\n"
+"        восстановления доступа."
+msgstr ""
+
+#: templates/default_set/referrals.html:10
+msgid "Ваша реферальная ссылка"
+msgstr ""
+
+#: templates/default_set/referrals.html:15
+msgid "У вас рефералов"
+msgstr ""
+
+#: templates/default_set/referrals.html:15
+msgid "На первом уровне"
+msgstr ""
+
+#: templates/default_set/referrals.html:21 templates/mail/comission.html:10
+msgid "Реферал"
+msgstr ""
+
+#: templates/default_set/referrals.html:22
+msgid "Уровень"
+msgstr ""
+
+#: templates/default_set/signin.html:5
+msgid "Авторизация"
+msgstr ""
+
+#: templates/includes/paginator.html:4
+msgid "Предыдущая"
+msgstr ""
+
+#: templates/includes/paginator.html:13
+msgid "Следующая"
+msgstr ""
+
+#: templates/index.html:4
+msgid "Старт проекта"
+msgstr ""
+
+#: templates/index.html:5
+msgid "Пользователей"
+msgstr ""
+
+#: templates/index.html:6
+msgid "За 24 часа"
+msgstr ""
+
+#: templates/index.html:7
+msgid "Депозитов"
+msgstr ""
+
+#: templates/index.html:8
+msgid "Сумма депозитов"
+msgstr ""
+
+#: templates/index.html:9
+msgid "Выводов"
+msgstr ""
+
+#: templates/index.html:10
+msgid "Сумма выводов"
+msgstr ""
+
+#: templates/mail/base.html:13
+msgid "Это сообщение отправлено автоматически, отвечать на него не нужно."
+msgstr ""
+
+#: templates/mail/base.html:15
+msgid "Спасибо за участие в нашем проекте!"
+msgstr ""
+
+#: templates/mail/base.html:16
+msgid "Команда"
+msgstr ""
+
+#: templates/mail/comission.html:5
+msgid "Вам начислено реферальное вознаграждение!"
+msgstr ""
+
+#: templates/mail/comission.html:9 templates/mail/withdraw_request.html:11
+msgid "Текущий баланс"
+msgstr ""
+
+#: templates/mail/new_referral.html:5
+msgid "По Вашей ссылке зарегистрировался новый реферал."
+msgstr ""
+
+#: templates/mail/new_referral.html:7
+msgid "Логин Вашего реферала"
+msgstr ""
+
+#: templates/mail/password_reset_email.html:5
+#, python-format
+msgid ""
+"Вы получили это письмо, потому что запросили сброс пароля для личного "
+"кабинета на\n"
+"            %(site_name)s."
+msgstr ""
+
+#: templates/mail/password_reset_subject.txt:2
+#, python-format
+msgid "Сброс пароля на %(site_name)s"
+msgstr ""
+
+#: templates/mail/registration.html:5
+msgid "Спасибо за регистрацию в проекте"
+msgstr ""
+
+#: templates/mail/registration.html:7
+msgid "Ваши данные для авторизации"
+msgstr ""
+
+#: templates/mail/registration.html:9
+msgid "Пароль"
+msgstr ""
+
+#: templates/mail/registration.html:9
+msgid "Указан при регистрации"
+msgstr ""
+
+#: templates/mail/registration.html:10
+msgid "Ваш спонсор"
+msgstr ""
+
+#: templates/mail/withdraw_request.html:5
+msgid "Вы сделали запрос на вывод средств."
+msgstr ""
+
+#: templates/mail/withdraw_request.html:9
+msgid "Наша комиссия"
+msgstr ""
+
+#: templates/mail/withdraw_request.html:10
+msgid "К получению"
+msgstr ""
+
+#: templates/mail/withdraw_request.html:12
+msgid ""
+"Напоминаем, что срок вывода составляет от 1 минуты до 24 часов. О завершении "
+"операции Вы\n"
+"            будете дополнительно уведомлены на Email."
+msgstr ""
+
+#: templates/mail/withdrawal_end.html:5
+msgid ""
+"Ваш запрос на вывод средств успешно обработан. Деньги отправлены на Ваш "
+"кошелек"
+msgstr ""
+
+#: templates/mail/withdrawal_end.html:8
+msgid "Номер кошелька"
+msgstr ""
+
+#: templates/mail/withdrawal_end.html:10
+msgid "Номер операции (Batch)"
+msgstr ""

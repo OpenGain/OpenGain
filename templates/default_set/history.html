@@ -1,0 +1,72 @@
+{% extends 'default_set/base.html' %}
+{% load i18n %}
+{% load tz %}
+{% block title %}
+    {% trans "История операций" %}
+{% endblock %}
+{% block account_content %}
+    <br>
+    {% trans "История операций" %}
+    <br>
+    <div class="history_header">
+        <a href="{% url 'account_history' %}">{% trans "Все" %}</a>
+        <a href="{% url 'account_history' %}?type=TRANSACTION_DEPOSIT">{% trans "Пополнения" %}</a>
+        <a href="{% url 'account_history' %}?type=TRANSACTION_WITHDRAW">{% trans "Выводы" %}</a>
+        <a href="{% url 'account_history' %}?type=TRANSACTION_TRANSFER_INCOMING">{% trans "Входящие переводы" %}</a>
+        <a href="{% url 'account_history' %}?type=TRANSACTION_TRANSFER_OUTGOING">{% trans "Исходящие переводы" %}</a>
+        <a href="{% url 'account_history' %}?type=TRANSACTION_REFERRAL">{% trans "Реферальные" %}</a>
+        <a href="{% url 'account_history' %}?type=TRANSACTION_ACCRUAL">{% trans "Начисления процентов" %}</a>
+    </div><br>
+    <div class="history_total">
+        {% trans "Итого" %}:
+        {% trans "Пополнения" %} - {{ user.transactions.get_deposits_amount }},
+        {% trans "Выводы" %} - {{ user.transactions.get_withdraws_amount }},
+        {% trans "Входящие переводы" %} - {{ user.transactions.get_transfers_incoming_amount }},
+        {% trans "Исходящие переводы" %} - {{ user.transactions.get_transfers_outgoing_amount }},
+        {% trans "Реферальные" %} - {{ user.transactions.get_referral_comissions_amount }},
+        {% trans "Начисления процентов" %} - {{ user.transactions.get_earnings_amount }}.
+    </div><br><br>
+    {% if transactions %}
+        <table>
+            <thead>
+            <tr>
+                <th>{% trans "Дата" %}</th>
+                <th>{% trans "Операция" %}</th>
+                <th>{% trans "Второй пользователь" %}</th>
+                <th>{% trans "Платежная система" %}</th>
+                <th>{% trans "Сумма" %}</th>
+                <th>{% trans "Баланс до" %}</th>
+                <th>{% trans "Баланс после" %}</th>
+                <th>{% trans "Батч" %}</th>
+                <th>{% trans "Завершено" %}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for tr in transactions %}
+                <tr>
+                    <td>{{ tr.created|timezone:user.timezone|date:'j E H:i' }}</td>
+                    <td>
+                        {% if tr.transaction_type == 1 and not tr.is_ended %}
+                            <a href="{% url 'deposit_continue' tr.pk %}">{{ tr.get_transaction_type_display }}</a>
+                        {% else %}
+                            {{ tr.get_transaction_type_display }}
+                        {% endif %} </td>
+                    <td>{{ tr.other_user|default:'-' }}</td>
+                    <td>{{ tr.get_ps_display }}</td>
+                    <td>{{ tr.amount }}</td>
+                    <td>{{ tr.balance_before }}</td>
+                    <td>{{ tr.balance_after }}</td>
+                    <td>{{ tr.batch|default:'-' }}</td>
+                    <td>{% if tr.is_ended %}
+                        {% trans "Да" %}
+                    {% else %}
+                        {% trans "Нет" %}
+                    {% endif %}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>{% trans "Нет данных для отображения" %}</p>
+    {% endif %}
+{% endblock %}

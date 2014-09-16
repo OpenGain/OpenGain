@@ -1,0 +1,10 @@
+*.pyc
+*.pyo
+.idea
+*.sublime-project
+*.sublime-workspace
+*.db
+*.sqlite3
+__pycache__
+tmp/*
+.vagrant/*

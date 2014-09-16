@@ -1,0 +1,13 @@
+{% extends 'mail/base.html' %}
+{% load i18n %}
+{% block content %}
+    {% autoescape off %}
+        {% trans "Вам начислено реферальное вознаграждение!" %}
+        <br/><br/>
+        {% trans "Платежная система" %}: <strong>{{ ps }}</strong><br/>
+        {% trans "Сумма" %}: <strong>${{ amount }}</strong><br/>
+        {% trans "Текущий баланс" %}: <strong>${{ balance }}</strong><br/>
+        {% trans "Реферал" %}: <strong>{{ referral.username }}</strong>
+    {% endautoescape %}
+{% endblock %}
+

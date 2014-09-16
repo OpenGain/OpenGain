@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load bootstrap3 %}
+{% block title %}
+    {% trans "Авторизация" %}
+{% endblock %}
+{% block content %}
+    <form action="" method="post" class="form">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% buttons %}
+            <button type="submit" class="btn btn-primary">
+                {% trans "Отправить" %}
+            </button>
+        {% endbuttons %}
+    </form>
+    <a href="{% url 'django.contrib.auth.views.password_reset' %}">{% trans "Восстановление доступа" %}</a>
+{% endblock %}

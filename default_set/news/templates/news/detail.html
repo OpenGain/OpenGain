@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load bootstrap3 %}
+{% block title %}{% trans "Новость" %}: {{ object.title }}{% endblock %}
+{% block content %}
+    {% load tz %}
+    <br/>
+    {% if object.is_public %}
+        {% if user.is_authenticated %}
+            {{ object.created|timezone:user.timezone|date:'j E H:i' }}
+        {% else %}
+            {{ object.created|date:'j E H:i' }}
+        {% endif %}
+        <br/>
+        <h1>{{ object.title }}</h1>
+        {{ object.text|safe|linebreaks }}<br/><br/>
+    {% else %}
+        <p>{% trans "Объект не опубликован" %}</p>
+    {% endif %}
+
+{% endblock %}

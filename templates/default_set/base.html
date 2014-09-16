@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}
+    <div class="account_header">
+        <a href="{% url 'account_deposit' %}">{% trans "Пополнение" %}</a>
+        <a href="{% url 'account_withdraw' %}">{% trans "Вывод средств" %}</a>
+        <a href="{% url 'account_transfer' %}">{% trans "Внутренний перевод" %}</a>
+        <a href="{% url 'account_history' %}">{% trans "История операций" %}</a>
+        <a href="{% url 'account_referrals' %}">{% trans "Реферальная система" %}</a>
+        {% if unread_dialogs_messages %}
+            <strong><a href="{% url 'dialogs_index' %}">{% trans "Диалоги" %}
+                ({{ unread_dialogs_messages }})</a></strong>
+        {% else %}
+            <a href="{% url 'dialogs_index' %}">{% trans "Диалоги" %}</a>
+        {% endif %}
+        <a href="{% url 'tickets_index' %}">{% trans "Тикеты" %}</a>
+        <a href="{% url 'account_settings' %}">{% trans "Настройки аккаунта" %}</a>
+        <a href="{% url 'account_payment_systems_settings' %}">{% trans "Настройки платежных систем" %}</a>
+    </div>
+    {% block account_content %}
+    {% endblock %}
+{% endblock %}

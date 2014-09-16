@@ -1,0 +1,12 @@
+{% extends 'default_set/base.html' %}
+{% load i18n %}
+{% block title %}
+    {% trans "Пополнение баланса" %}
+{% endblock %}
+{% block account_content %}
+    {% block form_content %}
+    {% endblock %}
+    <form action="{% url 'account_deposit_cancel' transaction.pk %}" method="post">{% csrf_token %}
+        <button type="submit">{% trans 'Отменить' %}</button>
+    </form>
+{% endblock %}

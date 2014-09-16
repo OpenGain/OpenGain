@@ -1,0 +1,29 @@
+{% extends 'default_set/deposit_continue.html' %}
+{% block form_content %}
+    {% load i18n %}
+    <p>
+        {% trans 'Платежная система' %}: {{ transaction.get_ps_display }}<br/>
+        {% trans 'Сумма' %}: ${{ transaction.amount }}<br/>
+
+    </p>
+    <form action="https://perfectmoney.is/api/step1.asp" method="post" enctype="application/x-www-form-urlencoded"
+          accept-charset="UTF-8">
+        <input type="hidden" name="STATUS_URL"
+               value="{{ protocol }}://{{ settings.PROJECT_DOMAIN }}{% url 'deposit_result_perfect_money' %}">
+        <input type="hidden" name="PAYMENT_URL"
+               value="{{ protocol }}://{{ settings.PROJECT_DOMAIN }}{% url 'deposit_ok' %}">
+        <input type="hidden" name="NOPAYMENT_URL"
+               value="{{ protocol }}://{{ settings.PROJECT_DOMAIN }}{% url 'deposit_error' %}">
+        <input type="hidden" name="PAYMENT_URL_METHOD" value="GET">
+        <input type="hidden" name="NOPAYMENT_URL_METHOD" value="GET">
+        <input type="hidden" name="PAYMENT_UNITS" value="USD">
+        <input type="hidden" name="PAYMENT_AMOUNT" value="{{ transaction.amount }}"/>
+        <input type="hidden" name="PAYEE_ACCOUNT" value="{{ settings.PM_WALLET }}">
+        <input type="hidden" name="PAYEE_NAME" value="{{ settings.PROJECT_TITLE }} payment">
+        <input type="hidden" name="PAYMENT_ID" value="{{ transaction.pk }}">
+        <input type="hidden" name="SUGGESTED_MEMO" value="{{ settings.PROJECT_TITLE }} deposit">
+
+        <button type="submit">{% trans 'Продолжить' %}</button>
+    </form>
+
+{% endblock %}

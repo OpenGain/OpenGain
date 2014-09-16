@@ -1,0 +1,19 @@
+{% extends 'default_set/base.html' %}
+{% load i18n %}
+{% block title %}
+    {% trans "Личный кабинет" %}
+{% endblock %}
+{% block account_content %}
+    <p>
+        {% trans "Привет" %}, {{ user.username }}!<br/>
+        {% trans "Отсутствует" as trans_not_found %}
+        {% trans "Спонсор" %}: {{ user.sponsor.username|default:trans_not_found }}<br/><br/>
+        {% trans "Рефералов" %}: {{ user.referrals.count }}<br/><br/>
+        {% trans "Депозиты" %}: {{ user.transactions.get_deposits_amount }}<br/>
+        {% trans "Выводы" %}: {{ user.transactions.get_withdraws_amount }}<br/>
+        {% trans "Реферальные" %}: {{ user.transactions.get_referral_comissions_amount }}<br/>
+        {% trans "Проценты на депозиты" %}: {{ user.transactions.get_earnings_amount }}<br/>
+        {% trans "Входящие переводы" %}: {{ user.transactions.get_transfers_incoming_amount }}<br/>
+        {% trans "Исходящие переводы" %}: {{ user.transactions.get_transfers_outgoing_amount }}<br/>
+    </p>
+{% endblock %}

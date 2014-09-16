@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}<br/>
+    {% trans "Старт проекта" %}: {{ project_start_datetime|date:'j E' }}<br/><br/>
+    {% trans "Пользователей" %}: {{ registered_users }}<br/>
+    {% trans "За 24 часа" %}: {{ registered_users_in_24h }}<br/><br/>
+    {% trans "Депозитов" %}: {{ stat_deposits_count }}<br/>
+    {% trans "Сумма депозитов" %}: ${{ stat_deposits_amount }}<br/><br/>
+    {% trans "Выводов" %}: {{ stat_withdraws_count }}<br/>
+    {% trans "Сумма выводов" %}: ${{ stat_withdraws_amount }}<br/>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'default_set/base.html' %}
+{% load i18n %}
+{% load tz %}
+{% load call_methods %}
+{% block title %}
+    {% trans "Реферальная система" %}
+{% endblock %}
+{% block account_content %}
+    <p>
+        {% trans "Ваша реферальная ссылка" %}:
+        <a href="{{ protocol }}://{{ settings.PROJECT_DOMAIN }}{% url 'sponsor_redirect' user.get_b64username %}">
+            {{ protocol }}://{{ settings.PROJECT_DOMAIN }}{% url 'sponsor_redirect' user.get_b64username %}
+        </a>
+    </p>
+    {% trans "У вас рефералов" %}: {{ user.get_all_referrals.count }} | {% trans "На первом уровне" %}:
+    {{ user.get_my_referrals.count }} <br/><br/>
+    <table>
+        <thead>
+        <tr>
+            <th>{% trans "Регистрация" %}</th>
+            <th>{% trans "Реферал" %}</th>
+            <th>{% trans "Уровень" %}</th>
+            <th>{% trans "Спонсор" %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for referral in user.get_all_referrals %}
+            <tr>
+                <td>{{ referral.date_joined|timezone:user.timezone|date:'j E H:i' }}</td>
+                <td>{{ referral.username }}</td>
+                <td>{{ referral|args:user|call:'get_sponsor_level' }}</td>
+                <td>{{ referral.sponsor }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

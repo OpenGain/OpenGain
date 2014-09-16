@@ -1,0 +1,10 @@
+{% extends 'mail/base.html' %}
+{% load i18n %}
+{% block content %}
+    {% autoescape off %}
+        {% trans "По Вашей ссылке зарегистрировался новый реферал." %}
+        <br/><br/>
+        {% trans "Логин Вашего реферала" %}: <strong>{{ referral.username }}</strong>
+    {% endautoescape %}
+{% endblock %}
+

@@ -1,0 +1,47 @@
+{% extends 'default_set/base.html' %}
+{% load i18n %}
+{% load bootstrap3 %}
+{% load call_methods %}
+{% block title %}
+    {% trans "Диалоги" %}
+{% endblock %}
+{% block account_content %}
+    {% trans "Диалоги" %}<br><br>
+    {% if dialogs %}
+        <table>
+            <thead>
+            <tr>
+                <th>{% trans "Диалог c пользователем" %}</th>
+                <th>{% trans "Сообщений" %}</th>
+                <th>{% trans "Непрочитанных" %}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for dialog in dialogs %}
+                <tr>
+                    <td>
+                        {% if dialog.get_sender != user %}
+                            <a href="{% url 'dialogs_detail' dialog.pk %}">{{ dialog.get_sender }}</a>
+                        {% else %}
+                            <a href="{% url 'dialogs_detail' dialog.pk %}">{{ dialog.get_receiver }}</a>
+                        {% endif %}
+                    </td>
+                    <td>{{ dialog.get_messages_count }}</td>
+                    <td>{{ dialog|args:user|call:'get_unreaded_count' }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table><br><br>
+    {% else %}
+        {% trans "У вас нет ни одного диалога." %}<br><br>
+    {% endif %}
+    <form action="" method="post" class="form">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% buttons %}
+            <button type="submit" class="btn btn-primary">
+                {% trans "Отправить сообщение" %}
+            </button>
+        {% endbuttons %}
+    </form>
+{% endblock %}

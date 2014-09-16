@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load bootstrap3 %}
+{% block title %}{% trans "Отзывы" %}{% endblock %}
+{% block content %}
+    {% load tz %}
+    {% if object_list %}
+        {% include 'includes/paginator.html' with page_obj=object_list %}
+        {% for object in object_list %}
+            <p>
+                {% if user.is_authenticated %}
+                    {{ object.created|timezone:user.timezone|date:'j E H:i' }}
+                {% else %}
+                    {{ object.created|date:'j E H:i' }}
+                {% endif %}<br/>
+                {{ object.user.username }}<br/>
+                {{ object.review|linebreaksbr }}<br/>
+                {{ object.admin_answer|safe|linebreaksbr }}
+            </p>
+        {% endfor %}
+        {% include 'includes/paginator.html' with page_obj=object_list %}<br>
+
+    {% else %}
+        {% trans "Нет объектов для отображения" %}<br>
+    {% endif %}
+
+    {% if user.is_authenticated %}
+        <form action="" method="post" class="form">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            {% buttons %}
+                <button type="submit" class="btn btn-primary">
+                    {% trans "Отправить" %}
+                </button>
+            {% endbuttons %}
+        </form>
+    {% else %}
+        {% trans 'Вы должны авторизоваться для публикации отзыва.' %}
+    {% endif %}
+
+{% endblock %}
+
+
+{{ form }}

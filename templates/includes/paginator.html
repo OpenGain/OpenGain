@@ -1,0 +1,17 @@
+{% load i18n %}
+<div class="inner">
+    <div class="inner_links">
+        {% if page_obj.has_previous %}<a href="?page={{ page_obj.previous_page_number }}">{% trans "Предыдущая" %}
+            </a>{% endif %}
+        {% for pr in page_obj.paginator.page_range %}
+            {% if pr == page_obj.number %}
+                <span>{{ pr }}</span>
+            {% else %}
+                <a href="?page={{ pr }}">{{ pr }}</a>
+            {% endif %}
+        {% endfor %}
+        {% if page_obj.has_next %}<a href="?page={{ page_obj.next_page_number }}">{% trans "Следующая" %}</a>{% endif %}
+    </div>
+</div>
+
+

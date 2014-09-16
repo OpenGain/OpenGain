@@ -1,0 +1,41 @@
+{% extends 'default_set/base.html' %}
+{% load i18n %}
+{% load bootstrap3 %}
+{% block title %}
+    {% trans "Тикеты" %}
+{% endblock %}
+{% block account_content %}
+    {% load tz %}
+    {% trans "Тикеты" %}<br>
+    {% if ticket_list %}
+        <table>
+            <thead>
+            <tr>
+                <th>{% trans "Дата" %}</th>
+                <th>{% trans "Тема" %}</th>
+                <th>{% trans "Статус" %}</th>
+                <th>{% trans "Новых сообщений" %}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for ticket in ticket_list %}
+                <tr>
+                    <td>{{ ticket.created|timezone:user.timezone|date:'j E H:i' }}</td>
+                    <td><a href="{% url 'tickets_detail' ticket.id %}">{{ ticket.subject }}</a></td>
+                    <td>
+                        {% if ticket.is_closed %}
+                            {% trans "Закрыт" %}
+                        {% else %}
+                            {% trans "Открыт" %}
+                        {% endif %}
+                    </td>
+                    <td>{{ ticket.get_unread_message_count }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        {% trans "У вас нет тикетов" %}<br>
+    {% endif %}
+    <a href="{% url 'tickets_create' %}">{% trans "Создать" %}</a>
+{% endblock %}

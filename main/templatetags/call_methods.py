@@ -6,7 +6,7 @@ register = template.Library()
 def callMethod(obj, methodName):
     method = getattr(obj, methodName)
 
-    if "__callArg" in obj.__dict__:
+    if obj.__callArg:
         ret = method(*obj.__callArg)
         del obj.__callArg
         return ret

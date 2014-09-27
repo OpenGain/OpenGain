@@ -59,7 +59,7 @@ class UserProfileManager(BaseUserManager):
 
 
 class UserProfile(AbstractBaseUser):
-    username = models.CharField(_('Логин'), max_length=20, unique=True, db_index=True)
+    username = models.CharField(_('Логин'), max_length=30, unique=True, db_index=True)
     email = models.EmailField(_('Email'), blank=False, null=False, default=None, unique=True, db_index=True)
     date_joined = models.DateTimeField(_('Регистрация'), default=timezone.now)
     timezone = models.CharField(_('Часовой пояс'), max_length=20, choices=[(x, x) for x in common_timezones],

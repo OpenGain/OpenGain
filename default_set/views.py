@@ -47,6 +47,7 @@ def signup(request):
         user.lang = current_lang
         user.sponsor = UserProfile.objects.get(
             username=form.cleaned_data.get('sponsor_username', UserProfile.objects.get_main_admin().username))
+        user.timezone=form.cleaned_data.get('timezone')
         user.save()
 
         user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password1'])

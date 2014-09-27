@@ -7,7 +7,7 @@ from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from main.discovers import PAYMENT_SYSTEMS
 from django.utils.importlib import import_module
 from django.utils.translation import ugettext_lazy as _
-
+from modeltranslation.admin import TabbedTranslationAdmin
 
 def get_ps_inlines():
     retval = []
@@ -111,7 +111,7 @@ class TransactionAdmin(admin.ModelAdmin):
 
 
 @admin.register(Plan, site=opengain_admin)
-class PlanAdmin(admin.ModelAdmin):
+class PlanAdmin(TabbedTranslationAdmin):
     list_display = ('title', 'min_amount', 'max_amount', 'percent', 'period')
 
 

@@ -103,9 +103,9 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': '',
-        'USER': '',
-        'PASSWORD': '',
+        'NAME': 'opengain',
+        'USER': 'opengain',
+        'PASSWORD': 'dEzKXJdlG8SXmULM',
         'HOST': 'localhost',
     }
 }

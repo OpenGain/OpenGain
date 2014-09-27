@@ -164,7 +164,7 @@ PROJECT_START_DATETIME = datetime(2014, 7, 10, 12, 0, 0, 0).replace(tzinfo=timez
 REFERRAL_COMISSIONS = (25, 15, 10)
 
 #Комиссия на вывод в процентах
-WITHDRAW_COMISSION_PERCENT = 3
+WITHDRAW_COMISSION_PERCENT = Decimal(3)
 
 #Минимальный единовременный вывод
 WITHDRAWAL_MIN = Decimal(1)

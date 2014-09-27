@@ -11,7 +11,7 @@ def index(request):
     paginator = Paginator(object_list, 20)
 
     form = ReviewForm(request.POST or None)
-    if request.method == 'POST':
+    if request.method == 'POST' and form.is_valid():
         instance = form.save(commit=False)
         instance.user = request.user
         instance.save()

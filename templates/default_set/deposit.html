@@ -1,7 +1,13 @@
 {% extends 'default_set/base.html' %}
 {% load i18n %}
+{% load tz %}
 {% block title %}
-    {% trans "Пополнение баланса" %}
+    {% if settings.USE_DEPOSITS %}
+        {% trans "Депозиты" %}
+    {% else %}
+        {% trans "Пополнение баланса" %}
+    {% endif %}
+
 {% endblock %}
 {% block account_content %}
     {% load bootstrap3 %}
@@ -14,4 +20,32 @@
             </button>
         {% endbuttons %}
     </form>
+    {% if settings.USE_DEPOSITS and user.deposits.all %}<div>
+        <table>
+            <thead>
+            <tr>
+                <th>{% trans 'Создание' %}</th>
+                <th>{% trans 'План' %}</th>
+                <th>{% trans 'Сумма' %}</th>
+                <th>{% trans 'Начислено' %}</th>
+                <th>{% trans 'Следующее начисление' %}</th>
+                <th>{% trans 'Статус' %}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for deposit in user.deposits.all %}
+                <tr>
+                    <td>{{ deposit.created|timezone:user.timezone|date:'j E H:i' }}</td>
+                    <td>{{ deposit.plan.title }}</td>
+                    <td>{{ deposit.amount }}</td>
+                    <td>{{ deposit.get_accrued_amount }}</td>
+                    <td>{% if not deposit.is_ended %}{{ deposit.get_next_accrual.datetime|timezone:user.timezone|date:'j E H:i' }}<br/>${{ deposit.get_next_accrual.amount }}{% else %}-{% endif %}</td>
+                    <td>{% if deposit.is_ended %}{% trans 'Закрыт' %}{% else %}{% trans 'В работе' %}{% endif %}</td>
+                </tr>
+
+            {% endfor %}
+
+            </tbody>
+        </table>
+    </div>{% endif %}
 {% endblock %}

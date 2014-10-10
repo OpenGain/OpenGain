@@ -1,4 +1,5 @@
 from django.db.models import F
+from default_set.deposits.models import Deposit
 from .models import *
 from django.db import transaction
 from decimal import *
@@ -38,20 +39,24 @@ class UserTransaction(object):
     def lock_ps_instance(self):
         return self.user.get_ps_class(self.ps).objects.select_for_update().get(pk=self.ps_instance.pk)
 
-    def _do_transaction(self):
+    def _do_transaction(self, change_balance=True):
         self.balance_before = self.ps_instance.balance
 
-        locked_ps_instance = self.lock_ps_instance()
+        if change_balance:
+            locked_ps_instance = self.lock_ps_instance()
 
-        if locked_ps_instance.balance + self.amount < 0:
-            raise InsufficientBalance
-        locked_ps_instance.balance = F('balance') + self.amount
-        locked_ps_instance.save()
+            if locked_ps_instance.balance + self.amount < 0:
+                raise InsufficientBalance
+            locked_ps_instance.balance = F('balance') + self.amount
+            locked_ps_instance.save()
 
         self.ps_class = self.user.get_ps_class(self.ps)
         self.ps_instance = self.ps_class.objects.get(pk=self.ps_instance.pk)
 
-        self.balance_after = self.ps_instance.balance
+        if change_balance:
+            self.balance_after = self.ps_instance.balance
+        else:
+            self.balance_after = self.balance_before
 
     @transaction.atomic
     def do_transaction_deposit(self, user, tr, batch):
@@ -60,14 +65,33 @@ class UserTransaction(object):
         self.ps = tr.ps
         self.amount = tr.amount
 
-        self._do_transaction()
+        self._do_transaction(change_balance=False)
+
+        deposit = None
+
+        if settings.USE_DEPOSITS:
+            plan = Plan.objects.get_plan_by_amount(self.amount)
+            if plan:
+                deposit = Deposit.objects.create(user=self.user, ps=self.ps, amount=self.amount, plan=plan)
+
+
         self.transaction = Transaction.objects.select_for_update().get(pk=tr.pk)
 
         self.transaction.balance_before = self.balance_before
         self.transaction.balance_after = self.balance_after
         self.transaction.batch = batch
         self.transaction.is_ended = True
+
+        if settings.USE_DEPOSITS:
+            self.transaction.deposit = deposit
+
         self.transaction.save()
+
+        if settings.REFERRAL_COMISSION_POINT == 'deposit':
+            sponsors = user.get_sponsors_and_percents()
+            for sponsor in sponsors:
+                self.do_transaction_referral(sponsor[0], self.ps, self.amount / Decimal(100) * sponsor[1], other_user=user)
+
 
     def do_transaction_withdraw(self, user, ps, amount):
         self.ps_instance = user.get_ps_instance(ps)
@@ -82,7 +106,6 @@ class UserTransaction(object):
                                                          balance_before=self.balance_before,
                                                          balance_after=self.balance_after)
 
-        self.do_admin_salary(self.user, self.ps, amount)
 
 
     def do_transaction_transfer(self, user, ps, amount, other_user):
@@ -128,7 +151,7 @@ class UserTransaction(object):
             ))
 
 
-    def do_transaction_accrual(self, user, ps, amount):
+    def do_transaction_accrual(self, user, ps, amount, deposit=None):
         self.ps_instance = user.get_ps_instance(ps)
         self.user = user
         self.ps = ps
@@ -138,23 +161,22 @@ class UserTransaction(object):
         self.transaction = self.user.transactions.create(ps=self.ps, amount=self.amount,
                                                          transaction_type=TRANSACTION_ACCRUAL,
                                                          balance_before=self.balance_before,
-                                                         balance_after=self.balance_after, is_ended=True)
-        sponsors = user.get_sponsors_and_percents()
-        for sponsor in sponsors:
-            self.do_transaction_referral(sponsor[0], ps, amount / Decimal(100) * sponsor[1], other_user=user)
+                                                         balance_after=self.balance_after, is_ended=True, deposit=deposit)
 
-    def do_admin_salary(self, user, ps, amount):
-        self.user = UserProfile.objects.get_main_admin()
-        if self.user != user:
-            self.ps_instance = self.user.get_ps_instance(ps)
-            self.ps = ps
-            self.amount = calculate_admin_salary(amount)
+        if settings.REFERRAL_COMISSION_POINT == 'accrual':
+            sponsors = user.get_sponsors_and_percents()
+            for sponsor in sponsors:
+                self.do_transaction_referral(sponsor[0], ps, amount / Decimal(100) * sponsor[1], other_user=user)
 
-            self._do_transaction()
-            self.transaction = self.user.transactions.create(ps=self.ps, amount=self.amount,
-                                                             transaction_type=TRANSACTION_ADMIN_SALARY,
-                                                             balance_before=self.balance_before,
-                                                             balance_after=self.balance_after, is_ended=True,
-                                                             other_user=user)
+    def do_deposit_return(self, deposit):
+        self.ps_instance = deposit.user.get_ps_instance(deposit.ps)
+        self.user = deposit.user
+        self.ps = deposit.ps
+        self.amount = deposit.amount
 
+        self._do_transaction()
+        self.transaction = self.user.transactions.create(ps=self.ps, amount=self.amount,
+                                                         transaction_type=TRANSACTION_DEPOSIT_RETURN,
+                                                         balance_before=self.balance_before,
+                                                         balance_after=self.balance_after, is_ended=True, deposit=deposit)
 

@@ -12,6 +12,7 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from pytz import common_timezones
 from django.core.exceptions import ValidationError, ObjectDoesNotExist
 import re
+#from default_set.deposits.models import Deposit
 from default_set.dialogs.models import Dialog
 from main import discovers
 from main.discovers import PAYMENT_SYSTEMS_TUPLE
@@ -195,7 +196,7 @@ TRANSACTION_TRANSFER_OUTGOING = 3
 TRANSACTION_TRANSFER_INCOMING = 4
 TRANSACTION_REFERRAL = 5
 TRANSACTION_ACCRUAL = 6
-TRANSACTION_ADMIN_SALARY = 7
+TRANSACTION_DEPOSIT_RETURN = 8
 
 TRANSACTION_TYPES = (
     (TRANSACTION_DEPOSIT, _('Пополнение баланса')),
@@ -204,7 +205,7 @@ TRANSACTION_TYPES = (
     (TRANSACTION_TRANSFER_INCOMING, _('Внутренний перевод входящий')),
     (TRANSACTION_REFERRAL, _('Реферальная комиссия')),
     (TRANSACTION_ACCRUAL, _('Начисление процентов')),
-    (TRANSACTION_ADMIN_SALARY, _('ЗП Админа')),
+    (TRANSACTION_DEPOSIT_RETURN, _('Возврат депозита')),
 )
 
 
@@ -253,6 +254,8 @@ class Transaction(models.Model):
                                        default=timezone.now)
     user = models.ForeignKey(UserProfile, related_name='transactions', verbose_name=_('Пользователь'), null=True,
                              blank=False, db_index=True)
+    deposit = models.ForeignKey('deposits.Deposit', related_name='deposit_transactions', verbose_name=_('Депозит'), null=True,
+                             blank=True, db_index=True)
     ps = models.CharField(_('Платежка'), max_length=20, choices=discovers.PAYMENT_SYSTEMS_TUPLE, null=True, blank=False,
                           db_index=True)
     amount = models.DecimalField(_('Сумма'), max_digits=8, decimal_places=2, default=0, null=False, blank=False)
@@ -311,6 +314,8 @@ class Plan(models.Model):
                                      blank=False)
     percent = models.DecimalField(_('Процент'), max_digits=7, decimal_places=2, default=0, null=False, blank=False)
     period = models.IntegerField(_('Период'), blank=False, null=False, choices=PLAN_PERIODS, default=2)
+    end_period = models.IntegerField(_('Срок в часах'), blank=True, null=True, default=24)
+    deposit_return = models.BooleanField(_('Возврат депозита после окончания'), default=False)
 
     objects = PlanManager()
 

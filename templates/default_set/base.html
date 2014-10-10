@@ -2,7 +2,7 @@
 {% load i18n %}
 {% block content %}
     <div class="account_header">
-        <a href="{% url 'account_deposit' %}">{% trans "Пополнение" %}</a>
+        <a href="{% url 'account_deposit' %}">{% if settings.USE_DEPOSITS %}{% trans "Депозиты" %}{% else %}{% trans "Пополнение" %}{% endif %}</a>
         <a href="{% url 'account_withdraw' %}">{% trans "Вывод средств" %}</a>
         <a href="{% url 'account_transfer' %}">{% trans "Внутренний перевод" %}</a>
         <a href="{% url 'account_history' %}">{% trans "История операций" %}</a>

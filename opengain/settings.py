@@ -56,11 +56,13 @@ INSTALLED_APPS = (
     #Базовые
     'main',
     'default_set',
+    'default_set.deposits',
     'default_set.reviews',
     'default_set.tickets',
     'default_set.news',
     'default_set.staticpages',
     'default_set.dialogs',
+
 
     #Платежки
     'payment_systems.perfect_money',
@@ -100,15 +102,26 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 )
 
 #sqlite3 не использовать! Она не поддерживает SELECT FOR UPDATE.
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': '',
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': 'localhost',
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'opengain',
+            'USER': 'opengain',
+            'PASSWORD': 'opengain',
+            'HOST': 'localhost',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': '',
+            'USER': '',
+            'PASSWORD': '',
+            'HOST': 'localhost',
+        }
+    }
 
 LANGUAGES = (
     ('ru', 'Русский'),
@@ -151,6 +164,9 @@ if DEBUG:
 
 #------------------------------------Project settings
 
+#Используем депозиты или единый баланс
+USE_DEPOSITS = 'default_set.deposits' in INSTALLED_APPS
+
 #На какие домены можно заходить
 ALLOWED_HOSTS = [PROJECT_DOMAIN, 'www.' + PROJECT_DOMAIN]
 
@@ -162,6 +178,9 @@ PROJECT_START_DATETIME = datetime(2014, 7, 10, 12, 0, 0, 0).replace(tzinfo=timez
 
 #Реферальные комиссии по уровням соответственно. Количество чисел и означает количество уровней.
 REFERRAL_COMISSIONS = (25, 15, 10)
+
+#Когда начисляется реферальная комиссия: 'deposit' - с депозита, 'accrual' - с заработка
+REFERRAL_COMISSION_POINT = 'deposit'
 
 #Комиссия на вывод в процентах
 WITHDRAW_COMISSION_PERCENT = Decimal(3)

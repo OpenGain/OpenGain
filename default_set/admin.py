@@ -106,7 +106,7 @@ class TransactionAdmin(admin.ModelAdmin):
     list_filter = ('is_ended', 'ps', 'transaction_type', )
     search_fields = ('user__username', 'user__email', 'other_user__username', 'other_user__email')
     ordering = ('-id',)
-    raw_id_fields = ('user', 'other_user', )
+    raw_id_fields = ('user', 'other_user', 'deposit')
     actions = (withdraw,)
 
 

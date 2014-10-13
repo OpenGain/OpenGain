@@ -18,6 +18,7 @@ class Deposit(models.Model):
     is_ended = models.BooleanField(_('Завершено'), default=False, db_index=True)
     plan = models.ForeignKey('default_set.Plan', related_name='plan_deposits', verbose_name=_('План'), null=False,
                              blank=False, db_index=True)
+    transactions = models.ManyToManyField(Transaction, verbose_name=_('Транзакции'))
 
 
     class Meta:
@@ -27,7 +28,7 @@ class Deposit(models.Model):
 
 
     def get_accrued_amount(self):
-        return self.deposit_transactions.filter(transaction_type=TRANSACTION_ACCRUAL).aggregate(Sum('amount'))['amount__sum'] or 0
+        return self.transactions.filter(transaction_type=TRANSACTION_ACCRUAL).aggregate(Sum('amount'))['amount__sum'] or 0
 
     def get_next_accrual(self):
         deltas = {
@@ -42,3 +43,4 @@ class Deposit(models.Model):
 
     def __str__(self):
         return '{}/{}'.format(self.plan.title, self.amount)
+

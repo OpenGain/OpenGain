@@ -81,11 +81,11 @@ class UserTransaction(object):
         self.transaction.balance_after = self.balance_after
         self.transaction.batch = batch
         self.transaction.is_ended = True
+        self.transaction.save()
 
         if settings.USE_DEPOSITS:
-            self.transaction.deposit = deposit
+            deposit.transactions.add(self.transaction)
 
-        self.transaction.save()
 
         if settings.REFERRAL_COMISSION_POINT == 'deposit':
             sponsors = user.get_sponsors_and_percents()
@@ -161,7 +161,9 @@ class UserTransaction(object):
         self.transaction = self.user.transactions.create(ps=self.ps, amount=self.amount,
                                                          transaction_type=TRANSACTION_ACCRUAL,
                                                          balance_before=self.balance_before,
-                                                         balance_after=self.balance_after, is_ended=True, deposit=deposit)
+                                                         balance_after=self.balance_after, is_ended=True)
+        if deposit:
+            deposit.transactions.add(self.transaction)
 
         if settings.REFERRAL_COMISSION_POINT == 'accrual':
             sponsors = user.get_sponsors_and_percents()
@@ -178,5 +180,6 @@ class UserTransaction(object):
         self.transaction = self.user.transactions.create(ps=self.ps, amount=self.amount,
                                                          transaction_type=TRANSACTION_DEPOSIT_RETURN,
                                                          balance_before=self.balance_before,
-                                                         balance_after=self.balance_after, is_ended=True, deposit=deposit)
+                                                         balance_after=self.balance_after, is_ended=True)
+        deposit.transactions.add(self.transaction)
 

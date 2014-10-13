@@ -254,8 +254,6 @@ class Transaction(models.Model):
                                        default=timezone.now)
     user = models.ForeignKey(UserProfile, related_name='transactions', verbose_name=_('Пользователь'), null=True,
                              blank=False, db_index=True)
-    deposit = models.ForeignKey('deposits.Deposit', related_name='deposit_transactions', verbose_name=_('Депозит'), null=True,
-                             blank=True, db_index=True)
     ps = models.CharField(_('Платежка'), max_length=20, choices=discovers.PAYMENT_SYSTEMS_TUPLE, null=True, blank=False,
                           db_index=True)
     amount = models.DecimalField(_('Сумма'), max_digits=8, decimal_places=2, default=0, null=False, blank=False)
@@ -283,6 +281,9 @@ class Transaction(models.Model):
 
     def get_abs_amount(self):
         return abs(self.amount)
+
+    def __str__(self):
+        return '#{} ${} - {} / {}'.format(self.pk, self.amount, self.get_transaction_type_display(), self.last_update)
 
 
 PLAN_PERIOD_HOUR = 1

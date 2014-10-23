@@ -22,7 +22,7 @@
 ##Требования
 
 * Python >= 3.4.1
-* Django >= 1.7
+* Django >= 1.7.1
 * django-modeltranslation >= 0.8b2
 * django-bootstrap3
 * django-rosetta
@@ -59,7 +59,7 @@ $ git clone https://github.com/OpenGain/OpenGain.git opengain && cd opengain
 Ставим необходимые модули:
 
 ```
-$ pip install django django-modeltranslation==0.8b2 django-bootstrap3 django-rosetta requests pytz
+$ pip install django==1.7.1 django-modeltranslation==0.8b2 django-bootstrap3 django-rosetta requests pytz
 ```
 
 На этот момент команда `./manage.py runserver` должна отрабатывать без ошибок:
